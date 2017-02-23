@@ -6,7 +6,7 @@ from card import Card
 from hand import Hand
 
 class OldMaidHand(Hand):
-    match_rules = {
+    match_rules = {    # Hearts := Diamonds,  Clubs := Spades
             0: 1,
             1: 0,
             2: 3,

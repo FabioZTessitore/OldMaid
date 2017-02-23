@@ -8,8 +8,10 @@ import random
 class Deck:
     def __init__(self):
         self.cards = []
-        for suit in range(len(Card.suits)):
-            for face in range(1, len(Card.faces)):
+        for suit, suitName in enumerate(Card.suits):
+            for face, faceName in enumerate(Card.faces):
+                if face==0:
+                    continue
                 self.cards.append(Card(suit, face))
 
     def __str__(self):
@@ -45,7 +47,7 @@ class Deck:
             remaining_cards -= 1
             cards_to_deal -= 1
             hands[current_hand].addCard(card)
-            current_hand = (current_hand+1)%n_hands
+            current_hand = (current_hand+1) % n_hands
 
 
 if __name__=='__main__':
@@ -54,17 +56,24 @@ if __name__=='__main__':
     print("original deck:")
     print(a_deck)
 
-    print("removing Ace of Hearts")
+    print("\nremoving Ace of Hearts by codes (0, 1)")
     if a_deck.removeCard(Card(0, 1)):
         print "Ace of Hearts removed"
     else:
         print "ERROR, unable to remove card"
     print(a_deck)
 
-    print "Deal a card"
+    print("\nremoving Two of Hearts by names")
+    if a_deck.removeCard(Card(Card.suits.index("Hearts"), Card.faces.index("Two"))):
+        print "Two of Hearts removed"
+    else:
+        print "ERROR, unable to remove card"
+    print(a_deck)
+
+    print "\nDeal a card"
     print a_deck.dealACard()
 
-    print("shuffled deck:");
+    print("\nshuffled deck:");
     a_deck.shuffle()
     print(a_deck)
 
@@ -77,10 +86,12 @@ if __name__=='__main__':
     print hand1
     print hand2
     print hand3
+    print "\n"
     print a_deck
 
     a_deck.dealCards([hand1, hand2, hand3])
     print hand1
     print hand2
     print hand3
+    print "\n"
     print a_deck

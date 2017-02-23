@@ -4,24 +4,23 @@
 
 class Card:
     faces = [ "unused", "Ace", "Two", "Three", "Four", "Five",
-            "Six", "Seven", "Eight", "Nine", "Ten",
-            "Jack", "Queen", "King" ]
+            "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" ]
     suits = [ "Hearts", "Diamonds", "Clubs", "Spades" ]
 
     def __init__(self, suit, face):
         self.suit = suit
         self.face = face
 
-    def get_suit(self):
+    def getSuit(self):
         return self.suit
 
-    def get_face(self):
+    def getFace(self):
         return self.face
 
-    def get_suit_name(self):
+    def getSuitName(self):
         return Card.suits[self.suit]
 
-    def get_face_name(self):
+    def getFaceName(self):
         return Card.faces[self.face]
 
     def __cmp__(self, other):
@@ -33,7 +32,7 @@ class Card:
             return self.suit-other.suit
 
     def __str__(self):
-        return ("%s of %s" % (self.get_face_name(), self.get_suit_name()))
+        return ("%s of %s" % (self.getFaceName(), self.getSuitName()))
 
 
 if __name__=='__main__':
@@ -48,9 +47,9 @@ if __name__=='__main__':
     suit = 0
     face = 1
     a_card = Card(suit, face)
-      
-    print "Card suit code: %d" % (a_card.get_suit(),)
-    print "Card face code: %d" % (a_card.get_face(),)
-    print "Card suit name: %s" % (a_card.get_suit_name(),)
-    print "Card face name: %s" % (a_card.get_face_name(),)
+
+    print "Card suit code: %d" % (a_card.getSuit(),)
+    print "Card face code: %d" % (a_card.getFace(),)
+    print "Card suit name: %s" % (a_card.getSuitName(),)
+    print "Card face name: %s" % (a_card.getFaceName(),)
     print a_card

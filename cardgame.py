@@ -8,6 +8,7 @@ class CardGame:
     def __init__(self):
         self.deck = Deck()
         self.deck.shuffle()
+        self.hands = []
 
     def getDeck(self):
         return self.deck
@@ -18,4 +19,4 @@ class CardGame:
 
 if __name__=='__main__':
     a_card_game = CardGame();
-    print a_card_game.deck
+    print a_card_game.getDeck()

@@ -27,7 +27,7 @@ class OldMaidGame(CardGame):
     def findNeighbor(self, turn):
         numHands = len(self.hands)
         for next in range(1, numHands):
-            neighbor = (turn+next)%numHands
+            neighbor = (turn+next) % numHands
             if not self.hands[neighbor].isEmpty():
                 return neighbor
 
@@ -59,7 +59,7 @@ class OldMaidGame(CardGame):
 
         print "---------------------Gioco Finito"
         self.printHands()
-        
+
 
 if __name__=='__main__':
     names = ['player1', 'player2', 'player3']
