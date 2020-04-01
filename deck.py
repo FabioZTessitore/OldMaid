@@ -1,18 +1,15 @@
 # deck.py
 
-# un mazzo di carte da gioco
-
 from card import Card
 import random
 
 class Deck:
-    def __init__(self):
+    def __init__(self, empty=False):
         self.cards = []
-        for suit, suitName in enumerate(Card.suits):
-            for face, faceName in enumerate(Card.faces):
-                if face==0:
-                    continue
-                self.cards.append(Card(suit, face))
+        if not empty:
+            for suit, suitName in enumerate(Card.suits):
+                for face, faceName in enumerate(Card.faces[1:]):
+                    self.cards.append(Card(suit, face+1))
 
     def __str__(self):
         s = ''
@@ -58,20 +55,20 @@ if __name__=='__main__':
 
     print("\nremoving Ace of Hearts by codes (0, 1)")
     if a_deck.removeCard(Card(0, 1)):
-        print "Ace of Hearts removed"
+        print("Ace of Hearts removed")
     else:
-        print "ERROR, unable to remove card"
+        print("ERROR, unable to remove card")
     print(a_deck)
 
     print("\nremoving Two of Hearts by names")
     if a_deck.removeCard(Card(Card.suits.index("Hearts"), Card.faces.index("Two"))):
-        print "Two of Hearts removed"
+        print("Two of Hearts removed")
     else:
-        print "ERROR, unable to remove card"
+        print("ERROR, unable to remove card")
     print(a_deck)
 
-    print "\nDeal a card"
-    print a_deck.dealACard()
+    print("\nDeal a card")
+    print(a_deck.dealACard())
 
     print("\nshuffled deck:");
     a_deck.shuffle()
@@ -83,15 +80,15 @@ if __name__=='__main__':
     hand3 = Hand('player3')
     # deal one card per hand
     a_deck.dealCards([hand1, hand2, hand3], 3)
-    print hand1
-    print hand2
-    print hand3
-    print "\n"
-    print a_deck
+    print(hand1)
+    print(hand2)
+    print(hand3)
+    print("\n")
+    print(a_deck)
 
+    print("\n")
     a_deck.dealCards([hand1, hand2, hand3])
-    print hand1
-    print hand2
-    print hand3
-    print "\n"
-    print a_deck
+    print(hand1)
+    print(hand2)
+    print(hand3)
+    print(a_deck)

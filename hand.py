@@ -1,13 +1,11 @@
 # hand.py
 
-# una "mano" di carte da gioco
-
 from deck import Deck
 
 class Hand(Deck):
     def __init__(self, name):
+        Deck.__init__(self, empty=True)
         self.name = name
-        self.cards = []
 
     def addCard(self, a_card):
         self.cards.append(a_card)
@@ -32,4 +30,4 @@ if __name__=='__main__':
     pl1_hand.addCard(card1)
     pl1_hand.addCard(card2)
 
-    print pl1_hand
+    print(pl1_hand)

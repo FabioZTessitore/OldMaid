@@ -8,12 +8,13 @@ from cardgame import CardGame
 
 class OldMaidGame(CardGame):
     def __init__(self, names):
-        print "---------------------Creazione del deck"
+        print("---------------------Preparing the Deck")
         CardGame.__init__(self)
 
-        print "---------------------Rimozione della regina di picche"
-        self.getDeck().removeCard(Card(Card.suits.index('Clubs'), 12))
+        print("---------------------Removing Queen of Clubs")
+        self.getDeck().removeCard( Card(Card.suits.index('Clubs'), 12) )
 
+        print("---------------------Creating Hands")
         self.hands = []
         for name in names:
             self.hands.append(OldMaidHand(name))
@@ -37,17 +38,17 @@ class OldMaidGame(CardGame):
         neighbor = self.findNeighbor(turn)
         pickedCard = self.hands[neighbor].dealACard()
         self.hands[turn].addCard(pickedCard)
-        print "Hand", self.hands[turn].name, "picked", pickedCard
+        print("Hand", self.hands[turn].name, "picked", pickedCard)
         count = self.hands[turn].removeMatches()
         self.hands[turn].shuffle()
         return count
 
     def run(self):
-        print "---------------------Distribuzione delle carte"
+        print("---------------------Cards")
         self.getDeck().dealCards(self.hands)
         self.printHands()
 
-        print "---------------------Rimozione delle coppie"
+        print("---------------------Removing matches")
         matches = self.removeAllMatches()
         self.printHands()
 
@@ -57,7 +58,7 @@ class OldMaidGame(CardGame):
             matches += self.playOneTurn(turn)
             turn = (turn+1) % numHands
 
-        print "---------------------Gioco Finito"
+        print("---------------------End Game")
         self.printHands()
 
 
